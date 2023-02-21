@@ -9,7 +9,7 @@ app.get('/server',(request, response)=>{
 
 app.post('/server',(request, response)=>{
     response.setHeader('Access-Control-Allow-Origin', '*')
-    response.send('HELLO AJAX POST')
+    response.send('HELLO AJAX POST -2')
 })
 
 app.listen(8000, ()=>{

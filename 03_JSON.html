@@ -19,13 +19,13 @@
         const result = document.getElementById('result')
         result.addEventListener('mouseover', function(){
             const xhr = new XMLHttpRequest()
-            xhr.open('POST', 'http://127.0.0.1:8000/server')
-            xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
-            xhr.send('a:100&b20&c:300')
+            xhr.open('GET', 'http://127.0.0.1:8000/json-server')
+            xhr.send()
             xhr.onreadystatechange = function(){
+                console.log(xhr.readyState)
                 if(xhr.readyState === 4) {
                     if (xhr.status >= 200 && xhr.status < 300) {
-                        result.innerHTML = xhr.response
+                        result.innerHTML = JSON.parse(xhr.response).name
                     }
                  }
             }

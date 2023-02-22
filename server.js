@@ -33,6 +33,12 @@ app.all('/jquery-server',(request, response)=>{
     response.send('jQuery ajax')
 })
 
+app.all('/axios-server',(request, response)=>{
+    response.setHeader('Access-Control-Allow-Origin', '*')
+    response.setHeader('Access-Control-Allow-Headers', '*')
+    response.send('axios ajax')
+})
+
 app.listen(8000, ()=>{
     console.log('服务已启动， 8000端口监听中....')
 })

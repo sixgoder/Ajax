@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+</head>
+<body>
+    <button id="get">GET</button>
+    <button id="post">POST</button>
+    <button id="ajax">General</button>
+
+    <script>
+        const btns = document.querySelectorAll('button')
+        axios.defaults.baseURL = 'http://127.0.0.1:8000'
+        btns[0].onclick = function(){
+            axios.get('/axios-server', {
+                params: {
+                    a:100,
+                    b:200
+                },
+                headers:{
+                    name:'axios',
+                    age:10
+                }
+            }).then(value=>{
+                console.log(value)
+            })
+        }
+
+        btns[1].onclick = function(){
+            axios.post('/axios-server', {
+                params: {
+                    a:100,
+                    b:200
+                },
+                headers:{
+                    name:'axios',
+                    age:10
+                },
+                data: {
+                    username:'admin',
+                    password:'admin'
+                }
+            }).then(value=>{
+                console.log(value)
+            })
+        }
+
+        btns[2].onclick = function(){
+            axios({
+                method: 'POST',
+                url:'/axios-server',
+                params: {
+                    a:100,
+                    b:200
+                },
+                data: {
+                    username:'admin',
+                    password:'admin'
+                }
+            })
+        }
+    </script>
+    
+</body>
+</html>

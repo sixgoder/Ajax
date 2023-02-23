@@ -46,6 +46,12 @@ app.all('/fetch-server',(request, response)=>{
     response.send(JSON.stringify(data))
 })
 
+app.all('/jsonp-server',(request, response)=>{
+    const data = {name: 'server'} 
+    let str = JSON.stringify(data)
+    response.send(`handle(${str})`)
+})
+
 app.listen(8000, ()=>{
     console.log('服务已启动， 8000端口监听中....')
 })

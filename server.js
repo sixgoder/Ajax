@@ -52,6 +52,14 @@ app.all('/jsonp-server',(request, response)=>{
     response.send(`handle(${str})`)
 })
 
+app.all('/jquery-jsonp-server',(request, response)=>{
+    const data = {name: 'server'} 
+    let str = JSON.stringify(data)
+    let cb = request.query.callback
+    response.send(`${cb}(${str})`)
+})
+
+
 app.listen(8000, ()=>{
     console.log('服务已启动， 8000端口监听中....')
 })
